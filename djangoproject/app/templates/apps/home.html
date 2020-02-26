@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <br>
+    {% for blog in blogs %}
+        <div class="card" style="width: 50%;">
+            <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ blog.pub_date }}</h6>
+            <p class="card-text">{{ blog.summary }}<a href="{% url 'apps:detail' blog.id %}">more..</a></p>
+            <a href="{% url 'apps:delete' blog.id %}" class="card-link">삭제</a>
+            <a href="{% url 'apps:update' blog.id %}" class="card-link">수정</a>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+
+</div>
+{% endblock %}
